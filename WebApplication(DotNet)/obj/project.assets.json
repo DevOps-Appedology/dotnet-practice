@@ -8,19 +8,19 @@
     "net6.0": []
   },
   "packageFolders": {
-    "C:\\Users\\Administrator\\.nuget\\packages\\": {}
+    "C:\\Users\\m.anas\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Visual-Projects\\WebApplication(DotNet)\\WebApplication(DotNet)\\WebApplication(DotNet).csproj",
+      "projectUniqueName": "C:\\git-projects-here\\dotnet-practice\\WebApplication(DotNet)\\WebApplication(DotNet).csproj",
       "projectName": "WebApplication(DotNet)",
-      "projectPath": "C:\\Visual-Projects\\WebApplication(DotNet)\\WebApplication(DotNet)\\WebApplication(DotNet).csproj",
-      "packagesPath": "C:\\Users\\Administrator\\.nuget\\packages\\",
-      "outputPath": "C:\\Visual-Projects\\WebApplication(DotNet)\\WebApplication(DotNet)\\obj\\",
+      "projectPath": "C:\\git-projects-here\\dotnet-practice\\WebApplication(DotNet)\\WebApplication(DotNet).csproj",
+      "packagesPath": "C:\\Users\\m.anas\\.nuget\\packages\\",
+      "outputPath": "C:\\git-projects-here\\dotnet-practice\\WebApplication(DotNet)\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Administrator\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\m.anas\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
