@@ -1,23 +1,50 @@
 pipeline {
     agent any
+
+    environment {
+        GIT_REPO_URL = 'https://github.com/Anas-Sardar/dotnet-practice.git'
+        WINDOWS_FOLDER = 'C:\\automatic\\Stag'
+    }
+
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
                 script {
-                    // Retrieve SSH credentials dynamically
-                    def sshCredentials = credentials('SSH_SERVER')
-                    
-                    if (sshCredentials != null) {
-                        // Start an SSH agent with the dynamically retrieved credentials
-                        sshagent(credentials: [${sshCredentials}]) {
-                            // Execute your shell script on the remote host
-                            sh 'ssh Administrator@100.25.17.128 "/c/Users/Administrator/Desktop/test.sh"'
-                        }
+                    checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], userRemoteConfigs: [[url: env.GIT_REPO_URL]]])
+                }
+            }
+        }
+
+        stage('Build') {
+            steps {
+                // Modify this section to perform your specific build steps
+                // sh 'npm install'  // Replace with your build commands
+            }
+        }
+
+        stage('Copy to Windows') {
+            steps {
+                script {
+                    // Copy built files to the Windows folder
+                    def copyCmd = "xcopy /E /Y \"${env.WORKSPACE}\\*\" \"${env.WINDOWS_FOLDER}\""
+                    bat script: copyCmd, returnStatus: true
+                    def exitCode = powershell(returnStatus: true, script: 'exit $LASTEXITCODE')
+                    if (exitCode == 0) {
+                        echo "Copy to Windows folder succeeded"
                     } else {
-                        error('Failed to retrieve SSH credentials')
+                        error "Copy to Windows folder failed"
                     }
                 }
             }
+        }
+    }
+
+    post {
+        success {
+            echo "Build and copy to Windows folder succeeded"
+        }
+        failure {
+            echo "Build or copy to Windows folder failed"
         }
     }
 }
