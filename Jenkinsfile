@@ -15,12 +15,7 @@ pipeline {
             }
         }
 
-        stage('Build') {
-            steps {
-                // Modify this section to perform your specific build steps
-                // sh 'npm install'  // Replace with your build commands
-            }
-        }
+
 
         stage('Copy to Windows') {
             steps {
